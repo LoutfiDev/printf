@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_hex.c                                       :+:      :+:    :+:   */
+/*   ft_printchar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yloutfi <yloutfi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 18:41:36 by yloutfi           #+#    #+#             */
-/*   Updated: 2022/11/01 19:25:40 by yloutfi          ###   ########.fr       */
+/*   Created: 2022/11/02 11:08:41 by yloutfi           #+#    #+#             */
+/*   Updated: 2022/11/02 13:58:43 by yloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-void	ft_put_hex(unsigned long nbr)
+void	ft_printchar(char c, int *count)
 {
-	char	*base;
-
-	base = "0123465789abcdef";
-	if (nbr >= 16)
-	{
-		ft_put_hex(nbr / 16);
-	}
-	ft_putchar(base[nbr % 16]);
+	write(1, &c, 1);
+	*count += 1;
 }

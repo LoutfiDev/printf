@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_unsigned.c                                  :+:      :+:    :+:   */
+/*   ft_printstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yloutfi <yloutfi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 18:43:16 by yloutfi           #+#    #+#             */
-/*   Updated: 2022/11/01 19:42:28 by yloutfi          ###   ########.fr       */
+/*   Created: 2022/10/31 18:50:07 by yloutfi           #+#    #+#             */
+/*   Updated: 2022/11/02 14:02:46 by yloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-void	ft_put_unsigned(unsigned long long nbr)
+void	ft_printstr(char *s, int *count)
 {
-	if (nbr >= 10)
-	{
-		ft_put_unsigned(nbr / 10);
-	}
-	ft_putchar(nbr % 10 + '0');
+	int	i;
+
+	if (!s)
+		return ;
+	i = 0;
+	while (s[i])
+		ft_printchar(s[i++], &count);
 }

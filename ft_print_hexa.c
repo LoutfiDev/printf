@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_print_hexa.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yloutfi <yloutfi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 18:50:51 by yloutfi           #+#    #+#             */
-/*   Updated: 2022/11/01 19:43:36 by yloutfi          ###   ########.fr       */
+/*   Created: 2022/11/01 18:42:12 by yloutfi           #+#    #+#             */
+/*   Updated: 2022/11/02 14:01:34 by yloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-void	ft_putnbr(int n)
+void	ft_print_hexa(unsigned int nbr, int *count)
 {
-	if (n == -2147483648)
+	char	*base;
+
+	base = "0123456789ABCDEF";
+	if (nbr >= 16)
 	{
-		ft_putnbr(-214748364);
-		ft_putchar('8');
+		ft_print_hexa(nbr / 16, &count);
 	}
-	else if (n < 0)
-	{
-		ft_putchar('-');
-		ft_putnbr(-n);
-	}
-	else
-	{
-		if (n >= 10)
-		{
-			ft_putnbr(n / 10);
-		}
-		ft_putchar(n % 10 + '0');
-	}
+	ft_printchar(base[nbr % 16], &count);
 }

@@ -6,11 +6,14 @@
 #    By: yloutfi <yloutfi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/31 11:27:02 by yloutfi           #+#    #+#              #
-#    Updated: 2022/10/31 19:36:43 by yloutfi          ###   ########.fr        #
+#    Updated: 2022/11/02 10:52:38 by yloutfi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = ft_printf.c ft_putchar.c ft_putnbr.c ft_putstr.c
+SRCS = ft_printf.c ft_printchar.c ft_printnbr.c 	\
+	ft_printstr.c ft_print_address.c ft_print_hex.c \
+	ft_print_hexa.c ft_print_unsigned.c
+
 
 OBJS = $(SRCS:.c=.o)
 
