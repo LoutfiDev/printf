@@ -6,7 +6,7 @@
 #    By: yloutfi <yloutfi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/31 11:27:02 by yloutfi           #+#    #+#              #
-#    Updated: 2022/11/02 10:52:38 by yloutfi          ###   ########.fr        #
+#    Updated: 2022/11/03 14:57:40 by yloutfi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,8 @@ CC = cc
 
 all : $(NAME)
 
-bonus : $(BONUS_OBJS)
-	ar rc $(NAME) $(BONUS_OBJS)
+# bonus : $(BONUS_OBJS)
+# 	ar rc $(NAME) $(BONUS_OBJS)
 	
 $(NAME) : $(OBJS)
 	ar rc $(NAME) $(OBJS)

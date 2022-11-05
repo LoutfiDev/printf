@@ -6,11 +6,11 @@
 /*   By: yloutfi <yloutfi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 11:08:41 by yloutfi           #+#    #+#             */
-/*   Updated: 2022/11/02 13:58:43 by yloutfi          ###   ########.fr       */
+/*   Updated: 2022/11/03 14:58:21 by yloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 void	ft_printchar(char c, int *count)
 {
