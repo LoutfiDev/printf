@@ -6,30 +6,74 @@
 /*   By: yloutfi <yloutfi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 18:50:51 by yloutfi           #+#    #+#             */
-/*   Updated: 2022/11/03 14:58:51 by yloutfi          ###   ########.fr       */
+/*   Updated: 2022/11/29 13:13:12 by yloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_printnbr(int n, int *count)
+static int	ft_get_lengh(int nb)
 {
-	if (n == -2147483648)
+	int	i;
+
+	i = 0;
+	while (nb > 0)
 	{
-		ft_printnbr(-214748364, count);
-		ft_printchar('8', count);
+		nb = nb / 10;
+		i++;
 	}
-	else if (n < 0)
+	return (i);
+}
+
+static char	*ft_itoa(int nbr)
+{
+	char	*n;
+	int		len;
+	int		i;
+
+	if (nbr == 0)
 	{
-		ft_printchar('-', count);
-		ft_printnbr(-n, count);
+		len = 1;
 	}
 	else
+		len = ft_get_lengh(nbr);
+	n = malloc((len + 1) * sizeof(char *));
+	if (!n)
+		return (NULL);
+	i = 0;
+	while (i < len)
 	{
-		if (n >= 10)
-		{
-			ft_printnbr(n / 10, count);
-		}
-		ft_printchar(n % 10 + '0', count);
+		n[len - i - 1] = (nbr % 10) + '0';
+		nbr = nbr / 10;
+		i++;
 	}
+	n[len] = '\0';
+	return (n);
+}
+
+void	ft_printnbr(int nbr, t_option options, int *count)
+{
+	char	*n;
+
+	n = NULL;
+	if (nbr >= 0)
+	{
+		if (options.flag_plus)
+			ft_printchar('+', options, count);
+		else if (options.flag_space)
+			ft_printstr(" ", &options, count);
+		n = ft_itoa(nbr);
+	}
+	else if (nbr == -2147483648)
+	{
+		ft_printstr("-2", &options, count);
+		n = ft_itoa(147483648);
+	}
+	else if (nbr < 0)
+	{
+		ft_printchar('-', options, count);
+		n = ft_itoa(-nbr);
+	}
+	ft_printstr(n, &options, count);
+	free(n);
 }

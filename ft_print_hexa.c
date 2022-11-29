@@ -6,20 +6,49 @@
 /*   By: yloutfi <yloutfi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 18:42:12 by yloutfi           #+#    #+#             */
-/*   Updated: 2022/11/03 14:58:14 by yloutfi          ###   ########.fr       */
+/*   Updated: 2022/11/28 18:09:56 by yloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_print_hexa(unsigned int nbr, int *count)
+static int	ft_get_lengh(unsigned long nb)
+{
+	int	i;
+
+	i = 0;
+	if (nb == 0)
+		return (1);
+	while (nb > 0)
+	{
+		nb = nb / 16;
+		i++;
+	}
+	return (i);
+}
+
+void	ft_print_hexa(unsigned int nbr, t_option options, int *count)
 {
 	char	*base;
+	char	*n;
+	int		len;
+	int		i;
 
 	base = "0123456789ABCDEF";
-	if (nbr >= 16)
+	if (options.flag_hashtag && nbr != 0)
+		ft_printstr("0X", &options, count);
+	len = ft_get_lengh(nbr);
+	n = malloc((len + 1) * sizeof(char *));
+	if (!n)
+		return ;
+	i = 0;
+	while (i < len)
 	{
-		ft_print_hexa(nbr / 16, count);
+		n[len - i - 1] = base[nbr % 16];
+		nbr = nbr / 16;
+		i++;
 	}
-	ft_printchar(base[nbr % 16], count);
+	n[len] = '\0';
+	ft_printstr(n, &options, count);
+	free(n);
 }
